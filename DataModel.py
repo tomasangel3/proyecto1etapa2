@@ -33,7 +33,7 @@ class DataModel(BaseModel):
 @app.post("/predict")
 def make_predictions(dataModel: DataModel):
     df = pd.DataFrame(dataModel.dict(), columns=dataModel.dict().keys(), index=[0])
-    model = load("/Users/tomasangel/Documents/GitHub/proyecto1etapa2/data/modelo.joblib")
+    model = load("data\modelo.joblib")
     result = model.predict(df)
     return {"predictions": result.tolist()}
 
