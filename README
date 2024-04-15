@@ -1,0 +1,7 @@
+Funcionamiento de la API
+
+1) Abrir una terminal
+2) Ejecutar el comando:
+    uvicorn main:app --reload
+3) Ingresar a traves de un portal web a la siguiente URL:
+    http://127.0.0.1:8000/docs
