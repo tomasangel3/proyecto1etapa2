@@ -13,27 +13,26 @@ import DataModel as dm
 
 app = FastAPI()
 
-data={}
+data=[]
 
 @app.post("/reviews")
 async def create_review(reviews: List[dm.DataModel]):
    # guardar reviews en una variable
    for review in reviews:
-      data[review.Review] = review.Review
+      data.append(review.dict())
    return {"file": "successfully uploaded"}
 
 @app.get("/show/reviews")
 async def get_reviews():
    return data
 
-@app.post("/predict")
+@app.get("/predict")
 def make_predictions():
-   data = dm.DataModel()
-   df = pd.DataFrame(data, columns=data.keys(), index=[0])
-   df.columns = dm.columns()
-   model = load("assets/modelo.joblib")
-   result = model.predict(df)
-   return result
+    df = pd.DataFrame(data, columns=('Review'), index=[0])
+    df.columns = ('Review')
+    model = load("modelo.joblib")
+    result = model.predict(df)
+    return result
 
 if __name__ == "__main__":
    uvicorn.run(app, host="127.0.0.1", port=8000)
