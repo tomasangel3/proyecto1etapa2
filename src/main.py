@@ -1,25 +1,40 @@
-from typing import Optional
+from typing import List, Optional
 from fastapi import FastAPI
 from joblib import load
 import pandas as pd
+import uvicorn
+import DataModel as dm
+from typing import List
+from fastapi import FastAPI
+from joblib import load
+import pandas as pd
+import uvicorn
 import DataModel as dm
 
 app = FastAPI()
 
+data={}
 
-@app.get("/")
-def read_root():
-   return {"Hello": "World"}
+@app.post("/reviews")
+async def create_review(reviews: List[dm.DataModel]):
+   # guardar reviews en una variable
+   for review in reviews:
+      data[review.Review] = review.Review
+   return {"file": "successfully uploaded"}
 
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-   return {"item_id": item_id, "q": q}
+@app.get("/show/reviews")
+async def get_reviews():
+   return data
 
 @app.post("/predict")
-def make_predictions(dataModel: dm):
-    df = pd.DataFrame(dataModel.dict(), columns=dataModel.dict().keys(), index=[0])
-    df.columns = dataModel.columns()
-    model = load("assets/modelo.joblib")
-    result = model.predict(df)
-    return result
+def make_predictions():
+   data = dm.DataModel()
+   df = pd.DataFrame(data, columns=data.keys(), index=[0])
+   df.columns = dm.columns()
+   model = load("assets/modelo.joblib")
+   result = model.predict(df)
+   return result
+
+if __name__ == "__main__":
+   uvicorn.run(app, host="127.0.0.1", port=8000)
+
