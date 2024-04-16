@@ -1,5 +1,13 @@
 Funcionamiento de la API
 
+Utilizar el entorno de Anaconda Python 3.11
+
+Instalar correctamente uvicorn en conda: 
+conda install conda-forge::uvicorn
+
+
+
+
 1) Abrir una terminal
 2) Ejecutar el comando:
     uvicorn main:app --reload
