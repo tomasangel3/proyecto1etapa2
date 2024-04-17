@@ -7,6 +7,8 @@ Visual Studio como admin
 Instalar correctamente uvicorn en conda: 
 
 conda install conda-forge::uvicorn
+conda install anaconda::jinja2
+
 
 para ejecutar moverse a src
 

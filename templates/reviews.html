@@ -1,0 +1,16 @@
+<html>
+<head>
+    <title>DFReview</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1> Reseñas ingresadas: </h1>
+    <!-- Quiero ver la data de main.py aca -->
+    <ul>
+        {% for i in data %}
+        <!-- Quiero que ademas se genere un espacio en blanco por cada una -->
+            <li><p>{{i}}</p></li>
+
+        {% endfor %}
+</body>
+</html>
