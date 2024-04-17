@@ -2,8 +2,19 @@ Funcionamiento de la API
 
 Utilizar el entorno de Anaconda Python 3.11
 
+Visual Studio como admin
+
 Instalar correctamente uvicorn en conda: 
+
 conda install conda-forge::uvicorn
+
+para ejecutar moverse a src
+
+cd src
+
+uvicorn main:app --reload
+
+y listo!!
 
 
 
