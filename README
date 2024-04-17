@@ -16,9 +16,6 @@ uvicorn main:app --reload
 
 y listo!!
 
-
-
-
 1) Abrir una terminal
 2) Ejecutar el comando:
     uvicorn main:app --reload
