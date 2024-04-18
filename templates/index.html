@@ -28,14 +28,22 @@
         a:hover {
             background-color: #0056b3;
         }
+        p {
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Bienvenido al proyecto Turismo los Alpes</h1>
-        <p>Acá podrás encontrar los paneles de control y visualización del algoritmo solución</p>
-        <p>Para visualizar las reseñas puedes dar click acá abajo</p>
-        <a href="http://localhost:8000/show/reviews">Reseñas</a>
+        <p> Acá podrás encontrar los paneles de control y visualización del algoritmo solución</p>
+        <p> Para visualizar las reseñas puedes dar click acá abajo</p>
+        <a href="http://localhost:8000/show/reviews">Leer reseñas</a>
+        <p> Para subir un documento CSV con las reseñas adjuntalo y posteriomente da click a subir</p>
+        <form action="http://localhost:8000/uploadfile/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv">
+            <p><button type="submit" class="btn btn-primary">Subir CSV</button></p>
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

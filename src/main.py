@@ -1,15 +1,10 @@
 from typing import List, Optional
-from fastapi import FastAPI, UploadFile, File
-from joblib import load
-import pandas as pd
-import uvicorn
-import DataModel as dm
-from typing import List
-from fastapi import FastAPI, Request 
+from fastapi import FastAPI, Request, UploadFile, File
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from joblib import load
+import io
 import pandas as pd
 import uvicorn
 import DataModel as dm
@@ -23,16 +18,9 @@ data=[]
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
     contents = await file.read()
-    df = pd.read_csv(pd.compat.StringIO(contents.decode('utf-8')))
+    df = pd.read_csv(io.StringIO(contents.decode('utf-8')))
     data.extend(df.to_dict('records'))
-    return {"file": "successfully uploaded"}
-
-@app.post("/reviews")
-async def create_review(reviews: List[dm.DataModel]):
-   # guardar reviews en una variable
-   for review in reviews:
-      data.append(review.dict())
-   return {"file": "successfully uploaded"}
+    return data
 
 @app.get("/", response_class=HTMLResponse)
 async def read_item(request: Request):
