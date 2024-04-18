@@ -46,12 +46,10 @@ async def get_reviews(request: Request):
 @app.get("/predict")
 def make_predictions():
     df = pd.DataFrame(data, columns=['Review'])
-    #for review in data :
-    #    print(review)
-    #    df = df.append({'Review':review}, ignore_index=True)
-    #model = load("../data/modelo.joblib")
-    #result = model.predict(df)
-    return df
+    model = load("../data/modelo.joblib")
+    result = model.predict(df)
+    print(result)
+    return result
 
 if __name__ == "__main__":
    uvicorn.run(app, host="127.0.0.1", port=8000)
