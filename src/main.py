@@ -15,12 +15,13 @@ templates = Jinja2Templates(directory="../templates")
 
 data=[]
 
-@app.post("/uploadfile/")
-async def create_upload_file(file: UploadFile = File(...)):
+@app.post("/uploadfile/", response_class=HTMLResponse)
+async def create_upload_file(request: Request, file: UploadFile = File(...)):
     contents = await file.read()
     df = pd.read_csv(io.StringIO(contents.decode('utf-8')))
     data.extend(df.to_dict('records'))
-    return data
+    return templates.TemplateResponse(
+      request=request, name="subirdocumento.html", context={"data": data})
 
 @app.get("/", response_class=HTMLResponse)
 async def read_item(request: Request):

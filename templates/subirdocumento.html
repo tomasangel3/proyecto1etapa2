@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Documento</title>
+    <title>Subida Exitosa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="my-4">Subir Documento de Reseñas</h1>
-        <form action="/uploadfile/" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="file">Selecciona un archivo CSV:</label>
-                <input type="file" id="file" name="file" accept=".csv">
-            </div>
-            <button type="submit" class="btn btn-primary">Subir</button>
-        </form>
+        <h1 class="my-4">¡Tu archivo se subió satisfactoriamente!</h1>
+        <p>Aquí están los primeros 5 registros de tus datos:</p>
+        <ul>
+            {% for record in data[:5] %}
+                <li>{{ record }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/" class="btn btn-primary mt-4">Regresar al inicio</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
