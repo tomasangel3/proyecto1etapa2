@@ -2,15 +2,29 @@
 <head>
     <title>DFReview</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <!-- Agregamos el CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h1> Reseñas ingresadas: </h1>
-    <!-- Quiero ver la data de main.py aca -->
-    <ul>
-        {% for i in data %}
-        <!-- Quiero que ademas se genere un espacio en blanco por cada una -->
-            <li><p>{{i}}</p></li>
-
-        {% endfor %}
+    <div class="container">
+        <h1 class="my-4">Reseñas ingresadas:</h1>
+        <a href="/" class="btn btn-primary mt-4">Volver</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Reseña</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ i }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
