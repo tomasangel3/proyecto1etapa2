@@ -1,0 +1,4 @@
+pip install FastAPI
+pip install python-multipart
+conda install conda-forge::uvicorn
+conda install anaconda::jinja2
