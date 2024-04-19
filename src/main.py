@@ -41,8 +41,11 @@ def make_predictions(request: Request):
     predict = model.predict(df['Review'])
     for text, prediction in zip(df['Review'], predict):
         list_predictions.append({"text": text, "prediction": prediction})
+    df_resultados = pd.DataFrame(list_predictions)
     return templates.TemplateResponse(
       request=request, name="prediccion.html", context={"predict": list_predictions})
+
+
 
 if __name__ == "__main__":
    uvicorn.run(app, host="127.0.0.1", port=8000)
