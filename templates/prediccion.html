@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de la Predicción</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Resultados de la Predicción del Modelo</h2>
+        <div class="mb-3">
+            <a href="/" class="btn btn-primary">Regresar</a>
+        </div>
+        <table class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Texto</th>
+                    <th scope="col">Predicción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dato in predict %}
+                <tr>
+                    <td>{{ dato.text }}</td>
+                    <td>{{ dato.prediction }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

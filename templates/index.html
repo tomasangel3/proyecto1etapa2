@@ -38,12 +38,14 @@
         <h1>Bienvenido al proyecto Turismo los Alpes</h1>
         <p> Acá podrás encontrar los paneles de control y visualización del algoritmo solución</p>
         <p> Para visualizar las reseñas puedes dar click acá abajo</p>
-        <a href="http://localhost:8000/show/reviews">Leer reseñas</a>
+        <a href="/show/reviews">Leer reseñas</a>
         <p> Para subir un documento CSV con las reseñas adjuntalo y posteriomente da click a subir</p>
-        <form action="http://localhost:8000/uploadfile/" method="post" enctype="multipart/form-data">
+        <form action="/uploadfile/" method="post" enctype="multipart/form-data">
             <input type="file" name="file" accept=".csv">
             <p><button type="submit" class="btn btn-primary">Subir CSV</button></p>
         </form>
+        <p> Ahora aquí puedes hacer predicción de las reseñas que subiste</p>
+        <a href="/predict">Hacer predicciórn</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

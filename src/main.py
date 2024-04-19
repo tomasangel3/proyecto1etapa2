@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from joblib import load
 import io
+import joblib
 import pandas as pd
 import uvicorn
 import DataModel as dm
@@ -32,13 +33,16 @@ async def get_reviews(request: Request):
    return templates.TemplateResponse(
       request=request, name="reviews.html", context={"data": data})
 
-@app.get("/predict")
-def make_predictions():
+@app.get("/predict", response_class=HTMLResponse)
+def make_predictions(request: Request):
+    list_predictions = []
     df = pd.DataFrame(data, columns=['Review'])
-    model = load("../data/modelo.joblib")
-    result = model.predict(df)
-    print(result)
-    return result
+    model = joblib.load("../data/modelo.joblib")
+    predict = model.predict(df['Review'])
+    for text, prediction in zip(df['Review'], predict):
+        list_predictions.append({"text": text, "prediction": prediction})
+    return templates.TemplateResponse(
+      request=request, name="prediccion.html", context={"predict": list_predictions})
 
 if __name__ == "__main__":
    uvicorn.run(app, host="127.0.0.1", port=8000)
