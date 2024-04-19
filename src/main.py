@@ -49,9 +49,10 @@ def make_predictions(request: Request):
 def obtener_tablero(request: Request):
     df_resultados = pd.DataFrame(list_predictions)
     df_resultados['prediction'] = df_resultados['prediction'].astype(str)
-    ax = sns.countplot(x="prediction", hue="prediction", data=df_resultados, dodge=False, order=[str(i) for i in range(1,6)])
+    ax = sns.countplot(x="prediction", hue="prediction", data=df_resultados, dodge=False)
     fig = ax.get_figure()
     fig.savefig("../static/countplot.png")
+    list_predictions = []
     return templates.TemplateResponse('tablero.html', {'request': request})
 
 if __name__ == "__main__":
