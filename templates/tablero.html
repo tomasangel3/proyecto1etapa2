@@ -14,6 +14,14 @@
             width: 45%;
             margin-bottom: 50px;
         }
+        /* Agregar estilos para la tabla */
+        .centered-table {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 50%;
+        }
     </style>
 </head>
 <body>
@@ -24,6 +32,39 @@
     <div class="container">
         <img src="../static/barplot.png" alt="Gráfico">
         <img src="../static/scatterplot.png" alt="Gráfico">
+    </div>
+    <div>
+        <h2 style="width: 100%; text-align: center;">Palabras importantes</h2>
+        <table class="table table-bordered table-striped mt-3 centered-table">
+            <thead>
+                <tr>
+                    <th scope="col">Calificacion</th>
+                    <th scope="col">Palabras mas comunes en las reseñas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>{{ data.1 }}</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>{{ data.2}}</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>{{ data.3}}</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>{{ data.4}}</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>{{ data.5}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>

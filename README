@@ -4,6 +4,10 @@ Utilizar el entorno de Anaconda Python 3.11
 
 para ejecutar moverse a src: cd /src
 
+python -m spacy download es_core_news_sm -q
+conda install conda-forge::uvicorn
+conda install anaconda::jinja2
+
 Ejecutar:
 
 1) Abrir una terminal

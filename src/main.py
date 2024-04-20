@@ -26,6 +26,10 @@ comun = None
 
 @app.post("/uploadfile/", response_class=HTMLResponse)
 async def create_upload_file(request: Request, file: UploadFile = File(...)):
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words('spanish'))
+    nltk.download('punkt')
+    nltk.download('vader_lexicon')
     contents = await file.read()
     df = pd.read_csv(io.StringIO(contents.decode('utf-8')))
     data.extend(df.to_dict('records'))
@@ -43,14 +47,7 @@ async def get_reviews(request: Request):
 
 @app.get("/predict", response_class=HTMLResponse)
 async def make_predictions(request: Request):
-
-    nltk.download('stopwords')
-    stop_words = set(stopwords.words('spanish'))
-    nltk.download('punkt')
-    nltk.download('vader_lexicon')
-
     df = pd.DataFrame(data, columns=['Review'])
-
     # Cargamos nuestro Pipeline de jupyter 
     model = joblib.load("../data/modelo.joblib")
     predict = model.predict(df['Review'])
@@ -77,11 +74,23 @@ async def make_predictions(request: Request):
 
 @app.get("/tablero", response_class=HTMLResponse)
 def obtener_tablero(request: Request):
-    # sacamos las palabras mas comunes para cada clasificacion
-    print(comun)
-    # haz una tabla  por cada llave
-    
-    return templates.TemplateResponse('tablero.html', {'request': request})
+    df_show = pd.DataFrame(comun)
+    data_front = df_show.to_dict()
+    data_front_2 = {}
+    data_front_final = {}
+
+# Iterar sobre el diccionario original
+    for key, value in data_front.items():
+    # Crear una lista con las palabras del diccionario original
+        words = [word for word, count in value.values()]
+    # Agregar la lista de palabras al nuevo diccionario
+        data_front_2[key] = words
+    for key, value in data_front_2.items():
+    # Unir las palabras en una cadena
+        words = ', '.join(value)
+    # Agregar la cadena de palabras al nuevo diccionario
+        data_front_final[key] = words
+    return templates.TemplateResponse('tablero.html', {'request': request, 'data':data_front_final})
 
 def generar_plots(df_resultados):
     # Plot de barras de la cantidad de reseñas por calificación
