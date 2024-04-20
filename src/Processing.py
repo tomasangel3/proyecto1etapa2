@@ -5,9 +5,8 @@ import spacy
 import inflect
 import nltk
 from nltk.tokenize import word_tokenize
-from nltk import word_tokenize, sent_tokenize
-from nltk.corpus import stopwords, wordnet
-from nltk.stem import SnowballStemmer, WordNetLemmatizer
+from nltk import word_tokenize
+from nltk.corpus import stopwords
 
 def tokenizer(text):
     return word_tokenize(text, language="spanish")
@@ -73,7 +72,6 @@ def preprocessing(words):
 
 
 def lemmatize_verbs(Palabras):
-    #Lemmatize verbs in list of tokenized words
     lemmatizer = spacy.load("es_core_news_sm")
     doc = lemmatizer(" ".join(Palabras))
     return [token.lemma_ for token in doc]
