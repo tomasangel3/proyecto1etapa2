@@ -31,6 +31,9 @@
         p {
             margin: 20px;
         }
+        h5 {
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
@@ -38,18 +41,18 @@
         <h1> Bienvenido al proyecto </h1>
         <h2> Turismo los Alpes </h2>
         <img src="../static/turismo.jpg" alt="Los Alpes" style="width: 400px;">
-        <p> Acá podrás encontrar los paneles de control y visualización del algoritmo solución</p>
-        <p> Para visualizar las reseñas puedes dar click acá abajo</p>
-        <a href="/show/reviews">Leer reseñas</a>
-        <p> Para subir un documento CSV con las reseñas adjuntalo y posteriomente da click a subir</p>
+        <h5> Acá podrás encontraras una plataforma para subir las reseñas y poder hacer una predicción de la calificacion de cada una de las reseñas.</h5>
+        <p> Debes subir un documento en formato CSV con las reseñas y posteriomente dar click a subir</p>
         <form action="/uploadfile/" method="post" enctype="multipart/form-data">
             <input type="file" name="file" accept=".csv">
             <p><button type="submit" class="btn btn-primary">Subir CSV</button></p>
         </form>
+        <p> Para visualizar las reseñas puedes dar click acá abajo</p>
+        <a href="/show/reviews">Leer reseñas</a>
         <p> Despues de subir tus datos puedes hacer predicción de la calificacion que tendrias las reseñas adjuntadas</p>
         <a href="/predict">Hacer predicción</a>
         <p> Visualizar resultados de la prediccion</p>
-        <a href="/tablero">Ver graficas</a>
+        <a href="/tablero">Ver Resultados</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
