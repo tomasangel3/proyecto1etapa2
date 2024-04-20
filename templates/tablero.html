@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gráfico</title>
+    <title>Tablero control</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-        }
         .container {
-            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
             padding-top: 50px;
+        }
+        .container img {
+            width: 45%;
+            margin-bottom: 50px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Gráfico de Predicciones</h2>
-        <img src="../static/countplot.png" alt="Gráfico" class="center">
+    <h2 style="width: 100%; text-align: center;">Gráfico de Predicciones</h2>
+    <a href="/" class="btn btn-primary mt-4">Regresar</a>
+    </div>
+    <div class="container">
+        <img src="../static/barplot.png" alt="Gráfico">
+        <img src="../static/histplot.png" alt="Gráfico">
+        <img src="../static/boxplot.png" alt="Gráfico">
+        <img src="../static/scatterplot.png" alt="Gráfico">
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>

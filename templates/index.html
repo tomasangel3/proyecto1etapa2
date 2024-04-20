@@ -10,7 +10,7 @@
             background-color: #f8f9fa;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
             padding: 20px;
             text-align: center;
@@ -35,7 +35,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenido al proyecto Turismo los Alpes</h1>
+        <h1> Bienvenido al proyecto </h1>
+        <h2> Turismo los Alpes </h2>
+        <img src="../static/turismo.jpg" alt="Los Alpes" style="width: 400px;">
         <p> Acá podrás encontrar los paneles de control y visualización del algoritmo solución</p>
         <p> Para visualizar las reseñas puedes dar click acá abajo</p>
         <a href="/show/reviews">Leer reseñas</a>
@@ -44,7 +46,7 @@
             <input type="file" name="file" accept=".csv">
             <p><button type="submit" class="btn btn-primary">Subir CSV</button></p>
         </form>
-        <p> Ahora aquí puedes hacer predicción de las reseñas que subiste</p>
+        <p> Despues de subir tus datos puedes hacer predicción de la calificacion que tendrias las reseñas adjuntadas</p>
         <a href="/predict">Hacer predicción</a>
         <p> Visualizar resultados de la prediccion</p>
         <a href="/tablero">Ver graficas</a>
