@@ -1,4 +1,8 @@
 pip install FastAPI
 pip install python-multipart
+pip install contractions
+pip install spacy
+pip install inflect
+python -m spacy download es_core_news_sm -q
 conda install conda-forge::uvicorn
 conda install anaconda::jinja2
